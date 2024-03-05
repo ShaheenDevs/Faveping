@@ -1,5 +1,5 @@
+import 'package:faveping/View/widgets/AfterLoginAppBar.dart';
 import 'package:flutter/material.dart';
-import 'package:faveping/widgets/customAppbar.dart';
 import 'Input_field_with_label.dart';
 import 'Photo_picker.dart';
 import 'Phone_Number.dart';
@@ -20,13 +20,13 @@ class _SignupState extends State<Signup> {
     double padding = 25.0;
 
     return Scaffold(
-      appBar: CustomAppBar(
-        onPingPressed: () {
-          // Handle sign1 button press
-        },
-        onFavePressed: () {
-          // Handle sign2 button press
-        },
+      appBar: const CustomAppBar(title: '',
+        // onPingPressed: () {
+        //   // Handle sign1 button press
+        // },
+        // onFavePressed: () {
+        //   // Handle sign2 button press
+        // },
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -44,7 +44,7 @@ class _SignupState extends State<Signup> {
                       hintText: 'Enter Name',
                     ),
                     const SizedBox(height: 8),
-                    BuildIntlPhoneField(labelText: 'Phone Number',),
+                    const BuildIntlPhoneField(labelText: 'Phone Number',),
                     const SizedBox(height: 8),
                     const BuildInputFieldWithLabel(
                       label: 'Username',
@@ -92,7 +92,7 @@ class _SignupState extends State<Signup> {
                           padding: const EdgeInsets.symmetric(horizontal: 0),
                           child: Radio<bool>(
                             value: true,
-                            activeColor: Color(0xFFB605AE),
+                            activeColor: const Color(0xFFB605AE),
                             groupValue: agreedToTerms,
                             onChanged: (bool? value) {
                               setState(() {
@@ -140,7 +140,7 @@ class _SignupState extends State<Signup> {
                   color: Colors.grey.withOpacity(0.5), // Add shadow color
                   spreadRadius: 5,
                   blurRadius: 7,
-                  offset: Offset(0, 3), // changes position of shadow
+                  offset: const Offset(0, 3), // changes position of shadow
                 ),
               ],
             ),

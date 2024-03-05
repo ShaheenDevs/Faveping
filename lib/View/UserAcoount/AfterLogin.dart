@@ -1,6 +1,6 @@
-import 'package:faveping/widgets/AfterLoginAppBar2.dart';
+import 'package:faveping/View/widgets/AfterLoginAppBar2.dart';
 import 'package:flutter/material.dart';
-import 'package:faveping/widgets/afterLoginAppBar.dart';
+
 
 class LoginedProfile extends StatelessWidget {
   @override

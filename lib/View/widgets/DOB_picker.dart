@@ -53,7 +53,7 @@ class _DOBPickerState extends State<DOBPicker> {
               ),
               child: TextFormField(
                 readOnly: true,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 12),
                   hintText: 'Pick DOB',
                   hintStyle: TextStyle(

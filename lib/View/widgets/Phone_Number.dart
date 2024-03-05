@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 
+
 class BuildIntlPhoneField extends StatelessWidget {
   final String? labelText;
 
@@ -14,13 +15,13 @@ class BuildIntlPhoneField extends StatelessWidget {
         if (labelText != null) ...[
           Text(
             labelText!,
-            style: TextStyle(
+            style: const TextStyle(
               fontWeight: FontWeight.bold,
               fontFamily: 'Baloo',
               color: Colors.grey,
             ),
           ),
-          SizedBox(height: 2),
+          const SizedBox(height: 2),
         ],
         Container(
           height: 42,

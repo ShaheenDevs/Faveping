@@ -1,8 +1,10 @@
-import 'package:faveping/widgets/signup.dart';
+
+import 'package:faveping/View/bottomNavigation/bottomNavigation.dart';
+import 'package:faveping/View/widgets/Custom_button.dart';
+import 'package:faveping/View/widgets/Phone_Number.dart';
+import 'package:faveping/View/widgets/signup.dart';
+import 'package:faveping/commons/appImages.dart';
 import 'package:flutter/material.dart';
-import 'package:faveping/widgets/Custom_button.dart';
-import 'package:faveping/widgets/Phone_Number.dart';
-import 'package:faveping/UserAcoount/AfterLogin.dart';
 // import 'package:faveping/UserAccount/AfterLogin.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -26,7 +28,7 @@ class _MyHomePageState extends State<MyHomePage> {
               children: [
                 SizedBox(height: MediaQuery.of(context).size.height * 0.2),
                 Image.asset(
-                  'assets/favepng.png',
+                faveImage,
                   height: 100, // Adjust the height as needed
                 ),
                 const SizedBox(height: 50),
@@ -56,7 +58,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     // Add navigation to home screen
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => LoginedProfile()),
+                      MaterialPageRoute(builder: (context) => BottomBar()),
                     );
                   },
                 ),
