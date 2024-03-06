@@ -3,6 +3,7 @@ import 'package:faveping/View/Chat/chat.dart';
 import 'package:faveping/View/Fave/fave.dart';
 import 'package:faveping/View/Party/party.dart';
 import 'package:faveping/View/Profile/profile.dart';
+import 'package:faveping/res/commons/AppColors/AppColor.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'View/Moments/moments.dart';
@@ -49,8 +50,6 @@ class _MyBottomNavBarState extends State<MyBottomNavBar> {
     //                 )));
     //   }
     // });
-
-
   }
 
   @override
@@ -60,67 +59,65 @@ class _MyBottomNavBarState extends State<MyBottomNavBar> {
       bottomNavigationBar: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          ClipRect(
-            child: BackdropFilter(
-              filter: ImageFilter.blur(sigmaX: 1, sigmaY: 1),
-              child: Container(
-                  // height: 70,
-                  decoration: const BoxDecoration(
-                    color: Colors.transparent,
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black12,
-                        blurRadius: 8.0,
-                      ),
-                    ],
+          Container(
+              // height: 70,
+              decoration: const BoxDecoration(
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(10),
+                    topRight: Radius.circular(10)),
+                color: Colors.white,
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black12,
+                    blurRadius: 8.0,
                   ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              _currentIndex = 0;
-                            });
-                          },
-                          child: bottomnavicon(AppIcons.home, "Moments",
-                              _currentIndex, 0)),
-                      GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              _currentIndex = 1;
-                            });
-                          },
-                          child: bottomnavicon(
-                              AppIcons.chats, "Chat", _currentIndex, 1)),
-                      GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              _currentIndex = 2;
-                            });
-                          },
-                          child: bottomnavicon(AppIcons.fave,
-                              "Fave", _currentIndex, 2)),
-                      GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              _currentIndex = 3;
-                            });
-                          },
-                          child: bottomnavicon(AppIcons.party, "Party",
-                              _currentIndex, 3)),
-                      GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              _currentIndex = 4;
-                            });
-                          },
-                          child: bottomnavicon(AppIcons.profile, "Profile",
-                              _currentIndex, 4)),
-                    ],
-                  )),
-            ),
-          ),
+                ],
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          _currentIndex = 0;
+                        });
+                      },
+                      child: bottomnavicon(
+                          AppIcons.home, "Moments", _currentIndex, 0)),
+                  GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          _currentIndex = 1;
+                        });
+                      },
+                      child: bottomnavicon(
+                          AppIcons.chats, "Chat", _currentIndex, 1)),
+                  GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          _currentIndex = 2;
+                        });
+                      },
+                      child: bottomnavicon(
+                          AppIcons.fave, "Fave", _currentIndex, 2)),
+                  GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          _currentIndex = 3;
+                        });
+                      },
+                      child: bottomnavicon(
+                          AppIcons.party, "Party", _currentIndex, 3)),
+                  GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          _currentIndex = 4;
+                        });
+                      },
+                      child: bottomnavicon(
+                          AppIcons.profile, "Profile", _currentIndex, 4)),
+                ],
+              )),
         ],
       ),
     );
@@ -128,31 +125,29 @@ class _MyBottomNavBarState extends State<MyBottomNavBar> {
 }
 
 Widget bottomnavicon(iamge, text, selected, index) {
-  return Padding(
-    padding: const EdgeInsets.only(top: 8.0),
-    child: Column(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Image(
-          image: AssetImage(iamge),
-          fit: BoxFit.cover,
-          height: 30,
-        ),
-        Text(
-          text,
-          style: TextStyle(
-              color: selected == index ? Colors.white : Colors.white54),
-        ),
-        Container(
-          width: Get.width * 0.15,
-          height: 3,
-          decoration: BoxDecoration(
-              borderRadius: const BorderRadius.all(Radius.circular(10)),
-              color: selected == index
-                  ? const Color.fromARGB(143, 147, 39, 143)
-                  : Colors.transparent),
-        )
-      ],
-    ),
+  return Column(
+    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    children: [
+      Container(
+        width: Get.width * 0.15,
+        height: 3,
+        decoration: BoxDecoration(
+            borderRadius: const BorderRadius.all(Radius.circular(10)),
+            color: selected == index
+                ? AppColors.primaryPink2
+                : Colors.transparent),
+      ),
+      Image(
+        image: AssetImage(iamge),
+        fit: BoxFit.cover,
+        color: selected == index ? Colors.black : Colors.black54,
+        height: 30,
+      ),
+      Text(
+        text,
+        style:
+            TextStyle(color: selected == index ? Colors.black : Colors.black54),
+      ),
+    ],
   );
 }

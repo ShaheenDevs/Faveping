@@ -1,16 +1,16 @@
-import 'package:faveping/View_widgets/back_button.dart';
+import 'package:faveping/res/commons/AppColors/AppColor.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import 'package:faveping/View_widgets/back_button.dart';
+
 import '../res/assetsImages/icons.dart';
 
-
-
 class CustomAppBar extends StatefulWidget implements PreferredSizeWidget {
-  final walletViewModel;
+  final momentsController;
   const CustomAppBar({
     Key? key,
-    required this.walletViewModel,
+    required this.momentsController,
   }) : super(key: key);
   @override
   _CustomAppBarState createState() => _CustomAppBarState();
@@ -28,9 +28,6 @@ class _CustomAppBarState extends State<CustomAppBar>
   void initState() {
     super.initState();
 
-    widget.walletViewModel.getNameSharedPref();
-
-    widget.walletViewModel.fetchUserWallet();
     _animationController = AnimationController(
       vsync: this,
       duration: const Duration(seconds: 1),
@@ -50,31 +47,121 @@ class _CustomAppBarState extends State<CustomAppBar>
   Widget build(BuildContext context) {
     return Container(
       height: Get.height * 0.1,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        crossAxisAlignment: CrossAxisAlignment.center,
+      // color: Colors.green,
+      child: Column(
         children: [
- 
-      
-       
-              SlideTransition(
-                position: _animation,
-                child: const Image(
-                  image: AssetImage(AppIcons.heart2),
-                  height: 40,
-                  width: 40,
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            child: Row(
+              // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text(
+                  "Moments",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
                 ),
-              ),
-       
-          
-          
+                SlideTransition(
+                  position: _animation,
+                  child: const Image(
+                    image: AssetImage(AppIcons.heart2),
+                    height: 40,
+                    width: 40,
+                  ),
+                ),
+              ],
+            ),
+          ),
+// updateIndex()
+          Expanded(
+              child: Obx(
+            () => Row(
+              children: [
+                InkWell(
+                  onTap: () => widget.momentsController.updateIndex(0),
+                  child: Container(
+                    width: Get.width * 0.5,
+                    decoration: BoxDecoration(
+                        gradient: widget.momentsController.currentIndex == 0
+                            ? LinearGradient(
+                                begin: Alignment.topCenter,
+                                end: Alignment.bottomCenter,
+                                colors: [
+                                    Colors.transparent,
+                                    AppColors.primaryPink.withOpacity(0.08)
+                                  ])
+                            : null),
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Image(
+                              image: AssetImage(AppIcons.top),
+                              color: widget.momentsController.currentIndex == 0
+                                  ? AppColors.primaryPink
+                                  : AppColors.black.withOpacity(0.8)),
+                          Text(
+                            "  Top",
+                            style: TextStyle(
+                                fontSize: 20,
+                                color:
+                                    widget.momentsController.currentIndex == 0
+                                        ? AppColors.primaryPink
+                                        : AppColors.black.withOpacity(0.8)),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                InkWell(
+                  onTap: () => widget.momentsController.updateIndex(1),
+                  child: Container(
+                    width: Get.width * 0.5,
+                    decoration: BoxDecoration(
+                        gradient: widget.momentsController.currentIndex == 1
+                            ? LinearGradient(
+                                begin: Alignment.topCenter,
+                                end: Alignment.bottomCenter,
+                                colors: [
+                                    Colors.transparent,
+                                    AppColors.primaryPink.withOpacity(0.08)
+                                  ])
+                            : null),
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Image(
+                              image: AssetImage(AppIcons.latest),
+                              color: widget.momentsController.currentIndex == 1
+                                  ? AppColors.primaryPink
+                                  : AppColors.black.withOpacity(0.8)),
+                          Text(
+                            "  Latest",
+                            style: TextStyle(
+                                fontSize: 20,
+                                color:
+                                    widget.momentsController.currentIndex == 1
+                                        ? AppColors.primaryPink
+                                        : AppColors.black.withOpacity(0.8)),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          )),
         ],
       ),
     );
   }
 }
-
-
 
 class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   // final Widget leading;
