@@ -1,5 +1,8 @@
+import 'package:faveping/res/assetsImages/icons.dart';
 import 'package:faveping/res/commons/appImages.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:get/get.dart';
 
 Widget listWidget() {
   return Row(
@@ -44,10 +47,38 @@ Widget listWidget() {
   );
 }
 
+Widget momentCard(imageUrls) {
 
+  return Container(
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        ListTile(
+          leading: CircleAvatar(
+            backgroundImage: NetworkImage(
+                "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiYcpfphM1QJa4z41UmvGY06b0TfmPakWPuxSgbwJorwh7RO7k3ne6Q4ddwQLlkz_FmRkIyhzB86kNNKJRWe8U3-ePSh-O6nhGIpsXirt00aD9raE2y2Il20UzDmGMGxBye9nLtIx0B3Do5tz-1fiUKagp113jS0j5ao5qEOhDqfnne-fLZ75oOegHk0UQ/s1080/Attitude%20Girls%20DP%20For%20WhatsApp%203.jpg"),
+          ),
+          subtitle: Text("16:05, 10 Jan, 2024"),
+          title: Text("Maria"),
+          trailing: IconButton(
+              onPressed: () {},
+              icon: Image(
+                image: AssetImage(AppIcons.menu),
+                height: 20,
+              )),
+        ),
+        SizedBox(
+            height: Get.height * 0.3,
+            child: CustomImageLayout(
+              imageUrls: imageUrls,
+            )),
+      ],
+    ),
+  );
+}
 
-
-Widget momentCard(){
+Widget faveCard() {
   return Container(
     child: Center(
       child: Text("data"),
@@ -55,10 +86,140 @@ Widget momentCard(){
   );
 }
 
-Widget faveCard(){
-  return Container(
-    child: Center(
-      child: Text("data"),
-    ),
-  );
+class CustomImageLayout extends StatelessWidget {
+  final List imageUrls;
+
+  CustomImageLayout({required this.imageUrls});
+
+  @override
+  Widget build(BuildContext context) {
+    // If there are no images, return an empty container
+    if (imageUrls.isEmpty) {
+      return Container();
+    }
+
+    // Check the number of images
+    if (imageUrls.length == 1) {
+      // If there's only one image, display it in full width
+      return SizedBox(
+        height: Get.height * 0.3,
+        width: Get.width * 0.96,
+        child: Image.network(
+          imageUrls[0],
+          fit: BoxFit.cover,
+        ),
+      );
+    } else if (imageUrls.length == 2) {
+      // If there are two images, display them side by side
+      return Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          SizedBox(
+            height: Get.height * 0.3,
+            width: Get.width * 0.48,
+            child: Image.network(
+              imageUrls[0],
+              fit: BoxFit.cover,
+            ),
+          ),
+          SizedBox(width: 4), // Spacer between images
+
+          SizedBox(
+            height: Get.height * 0.3,
+            width: Get.width * 0.48,
+            child: Image.network(
+              imageUrls[1],
+              fit: BoxFit.cover,
+            ),
+          ),
+        ],
+      );
+    } else if (imageUrls.length == 3) {
+      // If there are more than three images, show the first image on the left
+      // and two images on the right
+      return Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Image.network(
+            imageUrls[0],
+            fit: BoxFit.cover,
+            height: Get.height * 0.3,
+            width: Get.width * 0.48,
+          ),
+          SizedBox(width: 4), // Spacer between images
+          Column(
+            children: [
+              Image.network(
+                imageUrls[1],
+                fit: BoxFit.cover,
+                width: Get.width * 0.48,
+                height: Get.height * 0.145,
+              ),
+              SizedBox(height: 4), // Spacer between images
+              Image.network(
+                imageUrls[2],
+                fit: BoxFit.cover,
+                width: Get.width * 0.48,
+                height: Get.height * 0.145,
+              ),
+            ],
+          ),
+        ],
+      );
+    } else {
+      {
+        // If there are more than three images, show the first image on the left
+        // and two images on the right
+        return Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.network(
+              imageUrls[0],
+              fit: BoxFit.cover,
+              height: Get.height * 0.3,
+              width: Get.width * 0.48,
+            ),
+            SizedBox(width: 4), // Spacer between images
+            Column(
+              children: [
+                Image.network(
+                  imageUrls[1],
+                  fit: BoxFit.cover,
+                  width: Get.width * 0.48,
+                  height: Get.height * 0.145,
+                ),
+                SizedBox(height: 4), // Spacer between images
+                Stack(
+                  children: [
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.145,
+                      width: MediaQuery.of(context).size.width * 0.48,
+                      child: Image.network(
+                        imageUrls[2],
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    Positioned.fill(
+                      child: Container(
+                        color: Colors.grey.withOpacity(0.5),
+                        child: Center(
+                          child: Text(
+                            '+${imageUrls.length - 3} more',
+                            style: TextStyle(color: Colors.white),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ],
+        );
+      }
+    }
+  }
 }

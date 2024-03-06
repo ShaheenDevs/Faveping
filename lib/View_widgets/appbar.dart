@@ -47,7 +47,11 @@ class _CustomAppBarState extends State<CustomAppBar>
   Widget build(BuildContext context) {
     return Container(
       height: Get.height * 0.1,
-      // color: Colors.green,
+      decoration: BoxDecoration(
+          color: Colors.white.withOpacity(0.95),
+          borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(20),
+              bottomRight: Radius.circular(20))),
       child: Column(
         children: [
           Padding(
@@ -81,6 +85,9 @@ class _CustomAppBarState extends State<CustomAppBar>
                   child: Container(
                     width: Get.width * 0.5,
                     decoration: BoxDecoration(
+                        borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(20),
+                        ),
                         gradient: widget.momentsController.currentIndex == 0
                             ? LinearGradient(
                                 begin: Alignment.topCenter,
@@ -120,6 +127,8 @@ class _CustomAppBarState extends State<CustomAppBar>
                   child: Container(
                     width: Get.width * 0.5,
                     decoration: BoxDecoration(
+                        borderRadius:
+                            BorderRadius.only(bottomRight: Radius.circular(20)),
                         gradient: widget.momentsController.currentIndex == 1
                             ? LinearGradient(
                                 begin: Alignment.topCenter,
@@ -137,6 +146,7 @@ class _CustomAppBarState extends State<CustomAppBar>
                         children: [
                           Image(
                               image: AssetImage(AppIcons.latest),
+                              height: 20,
                               color: widget.momentsController.currentIndex == 1
                                   ? AppColors.primaryPink
                                   : AppColors.black.withOpacity(0.8)),

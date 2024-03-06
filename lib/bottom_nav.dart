@@ -54,71 +54,73 @@ class _MyBottomNavBarState extends State<MyBottomNavBar> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: screens[_currentIndex],
-      bottomNavigationBar: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Container(
-              // height: 70,
-              decoration: const BoxDecoration(
-                borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(10),
-                    topRight: Radius.circular(10)),
-                color: Colors.white,
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black12,
-                    blurRadius: 8.0,
-                  ),
-                ],
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          _currentIndex = 0;
-                        });
-                      },
-                      child: bottomnavicon(
-                          AppIcons.home, "Moments", _currentIndex, 0)),
-                  GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          _currentIndex = 1;
-                        });
-                      },
-                      child: bottomnavicon(
-                          AppIcons.chats, "Chat", _currentIndex, 1)),
-                  GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          _currentIndex = 2;
-                        });
-                      },
-                      child: bottomnavicon(
-                          AppIcons.fave, "Fave", _currentIndex, 2)),
-                  GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          _currentIndex = 3;
-                        });
-                      },
-                      child: bottomnavicon(
-                          AppIcons.party, "Party", _currentIndex, 3)),
-                  GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          _currentIndex = 4;
-                        });
-                      },
-                      child: bottomnavicon(
-                          AppIcons.profile, "Profile", _currentIndex, 4)),
-                ],
-              )),
-        ],
+    return SafeArea(
+      child: Scaffold(
+        body: screens[_currentIndex],
+        bottomNavigationBar: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Container(
+                // height: 70,
+                decoration: const BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(10),
+                      topRight: Radius.circular(10)),
+                  color: Colors.white,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black12,
+                      blurRadius: 8.0,
+                    ),
+                  ],
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            _currentIndex = 0;
+                          });
+                        },
+                        child: bottomnavicon(
+                            AppIcons.home, "Moments", _currentIndex, 0)),
+                    GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            _currentIndex = 1;
+                          });
+                        },
+                        child: bottomnavicon(
+                            AppIcons.chats, "Chat", _currentIndex, 1)),
+                    GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            _currentIndex = 2;
+                          });
+                        },
+                        child: bottomnavicon(
+                            AppIcons.fave, "Fave", _currentIndex, 2)),
+                    GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            _currentIndex = 3;
+                          });
+                        },
+                        child: bottomnavicon(
+                            AppIcons.party, "Party", _currentIndex, 3)),
+                    GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            _currentIndex = 4;
+                          });
+                        },
+                        child: bottomnavicon(
+                            AppIcons.profile, "Profile", _currentIndex, 4)),
+                  ],
+                )),
+          ],
+        ),
       ),
     );
   }
@@ -136,6 +138,9 @@ Widget bottomnavicon(iamge, text, selected, index) {
             color: selected == index
                 ? AppColors.primaryPink2
                 : Colors.transparent),
+      ),
+      SizedBox(
+        height: 5,
       ),
       Image(
         image: AssetImage(iamge),
