@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:get/get.dart';
 
+import '../res/commons/AppColors/AppColor.dart';
+
 Widget listWidget() {
   return Row(
     children: [
@@ -48,8 +50,8 @@ Widget listWidget() {
 }
 
 Widget momentCard(imageUrls) {
-
-  return Container(
+  return Padding(
+    padding: const EdgeInsets.all(10.0),
     child: Column(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -73,6 +75,54 @@ Widget momentCard(imageUrls) {
             child: CustomImageLayout(
               imageUrls: imageUrls,
             )),
+        Row(
+          children: [
+            IconButton(
+                onPressed: () {},
+                icon: Image(
+                  image: AssetImage(AppIcons.like),
+                  height: 20,
+                )),
+            Text(
+              "22 Likes",
+              style: TextStyle(color: Colors.black.withOpacity(0.5)),
+            ),
+            IconButton(
+                onPressed: () {},
+                icon: Image(
+                  image: AssetImage(AppIcons.comment),
+                  height: 20,
+                )),
+            Text(
+              "1 Comments",
+              style: TextStyle(color: Colors.black.withOpacity(0.5)),
+            ),
+          ],
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8),
+          child: Container(
+            decoration: BoxDecoration(
+                color: AppColors.primaryPink.withOpacity(0.1),
+                borderRadius: BorderRadius.all(Radius.circular(20))),
+            child: ListTile(
+              leading: CircleAvatar(
+                backgroundImage: NetworkImage(
+                    "https://designimages.appypie.com/displaypicture/displaypicture-17-face-person.jpg"),
+              ),
+              subtitle: Text(
+                "good to see you again",
+                overflow: TextOverflow.ellipsis,
+                maxLines: 1,
+              ),
+              title: Text("Ali Khan"),
+            ),
+          ),
+        ),
+        SizedBox(
+          height: 5,
+        ),
+        Divider()
       ],
     ),
   );
@@ -104,9 +154,12 @@ class CustomImageLayout extends StatelessWidget {
       return SizedBox(
         height: Get.height * 0.3,
         width: Get.width * 0.96,
-        child: Image.network(
-          imageUrls[0],
-          fit: BoxFit.cover,
+        child: ClipRRect(
+          borderRadius: BorderRadius.all(Radius.circular(10)),
+          child: Image.network(
+            imageUrls[0],
+            fit: BoxFit.cover,
+          ),
         ),
       );
     } else if (imageUrls.length == 2) {
@@ -117,20 +170,26 @@ class CustomImageLayout extends StatelessWidget {
         children: [
           SizedBox(
             height: Get.height * 0.3,
-            width: Get.width * 0.48,
-            child: Image.network(
-              imageUrls[0],
-              fit: BoxFit.cover,
+            width: Get.width * 0.45,
+            child: ClipRRect(
+              borderRadius: BorderRadius.all(Radius.circular(10)),
+              child: Image.network(
+                imageUrls[0],
+                fit: BoxFit.cover,
+              ),
             ),
           ),
           SizedBox(width: 4), // Spacer between images
 
           SizedBox(
             height: Get.height * 0.3,
-            width: Get.width * 0.48,
-            child: Image.network(
-              imageUrls[1],
-              fit: BoxFit.cover,
+            width: Get.width * 0.45,
+            child: ClipRRect(
+              borderRadius: BorderRadius.all(Radius.circular(10)),
+              child: Image.network(
+                imageUrls[1],
+                fit: BoxFit.cover,
+              ),
             ),
           ),
         ],
@@ -142,26 +201,32 @@ class CustomImageLayout extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Image.network(
-            imageUrls[0],
-            fit: BoxFit.cover,
-            height: Get.height * 0.3,
-            width: Get.width * 0.48,
+          ClipRRect(
+            borderRadius: BorderRadius.all(Radius.circular(10)),
+            child: Image.network(
+              imageUrls[0],
+              fit: BoxFit.cover,
+              height: Get.height * 0.3,
+              width: Get.width * 0.45,
+            ),
           ),
           SizedBox(width: 4), // Spacer between images
           Column(
             children: [
-              Image.network(
-                imageUrls[1],
-                fit: BoxFit.cover,
-                width: Get.width * 0.48,
-                height: Get.height * 0.145,
+              ClipRRect(
+                borderRadius: BorderRadius.all(Radius.circular(10)),
+                child: Image.network(
+                  imageUrls[1],
+                  fit: BoxFit.cover,
+                  width: Get.width * 0.45,
+                  height: Get.height * 0.145,
+                ),
               ),
               SizedBox(height: 4), // Spacer between images
               Image.network(
                 imageUrls[2],
                 fit: BoxFit.cover,
-                width: Get.width * 0.48,
+                width: Get.width * 0.45,
                 height: Get.height * 0.145,
               ),
             ],
@@ -176,35 +241,47 @@ class CustomImageLayout extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.network(
-              imageUrls[0],
-              fit: BoxFit.cover,
-              height: Get.height * 0.3,
-              width: Get.width * 0.48,
+            ClipRRect(
+              borderRadius: BorderRadius.all(Radius.circular(10)),
+              child: Image.network(
+                imageUrls[0],
+                fit: BoxFit.cover,
+                height: Get.height * 0.3,
+                width: Get.width * 0.45,
+              ),
             ),
             SizedBox(width: 4), // Spacer between images
             Column(
               children: [
-                Image.network(
-                  imageUrls[1],
-                  fit: BoxFit.cover,
-                  width: Get.width * 0.48,
-                  height: Get.height * 0.145,
+                ClipRRect(
+                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                  child: Image.network(
+                    imageUrls[1],
+                    fit: BoxFit.cover,
+                    width: Get.width * 0.45,
+                    height: Get.height * 0.145,
+                  ),
                 ),
                 SizedBox(height: 4), // Spacer between images
                 Stack(
                   children: [
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.145,
-                      width: MediaQuery.of(context).size.width * 0.48,
-                      child: Image.network(
-                        imageUrls[2],
-                        fit: BoxFit.cover,
+                      width: MediaQuery.of(context).size.width * 0.45,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                        child: Image.network(
+                          imageUrls[2],
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
                     Positioned.fill(
                       child: Container(
-                        color: Colors.grey.withOpacity(0.5),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(10)),
+                          color: Colors.black.withOpacity(0.5),
+                        ),
                         child: Center(
                           child: Text(
                             '+${imageUrls.length - 3} more',
