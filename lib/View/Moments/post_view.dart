@@ -7,6 +7,7 @@ import '../../View_widgets/back_button.dart';
 import '../../View_widgets/my_textfield.dart';
 import '../../res/assetsImages/icons.dart';
 import '../../res/commons/AppColors/AppColor.dart';
+import '../Fave/fave_profile.dart';
 
 class PostView extends StatefulWidget {
   const PostView({
@@ -34,9 +35,13 @@ class _PostViewState extends State<PostView> {
               ListTile(),
               ListTile(
                 contentPadding: EdgeInsets.all(0),
-                leading: CircleAvatar(
-                  backgroundImage: NetworkImage(
-                      "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiYcpfphM1QJa4z41UmvGY06b0TfmPakWPuxSgbwJorwh7RO7k3ne6Q4ddwQLlkz_FmRkIyhzB86kNNKJRWe8U3-ePSh-O6nhGIpsXirt00aD9raE2y2Il20UzDmGMGxBye9nLtIx0B3Do5tz-1fiUKagp113jS0j5ao5qEOhDqfnne-fLZ75oOegHk0UQ/s1080/Attitude%20Girls%20DP%20For%20WhatsApp%203.jpg"),
+                leading: InkWell(
+                  borderRadius: BorderRadius.all(Radius.circular(50)),
+                  onTap: () => Get.to(FaveProfile()),
+                  child: CircleAvatar(
+                    backgroundImage: NetworkImage(
+                        "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiYcpfphM1QJa4z41UmvGY06b0TfmPakWPuxSgbwJorwh7RO7k3ne6Q4ddwQLlkz_FmRkIyhzB86kNNKJRWe8U3-ePSh-O6nhGIpsXirt00aD9raE2y2Il20UzDmGMGxBye9nLtIx0B3Do5tz-1fiUKagp113jS0j5ao5qEOhDqfnne-fLZ75oOegHk0UQ/s1080/Attitude%20Girls%20DP%20For%20WhatsApp%203.jpg"),
+                  ),
                 ),
                 subtitle: Text("16:05, 10 Jan, 2024"),
                 title: Text("Maria"),
@@ -165,25 +170,7 @@ class _PostImageViewState extends State<PostImageView> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      appBar: AppBar(
-        scrolledUnderElevation: 0,
-        backgroundColor: Colors.transparent,
-        leading: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: CircleAvatar(
-            child: Center(
-                child: IconButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              icon: const Icon(
-                Icons.keyboard_arrow_left_sharp,
-                color: AppColors.primaryPink2,
-              ),
-            )),
-          ),
-        ),
-      ),
+      appBar: MyAppBar(title: ""),
       body: Center(
         child: GestureDetector(
           onScaleStart: (ScaleStartDetails details) {

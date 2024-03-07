@@ -445,6 +445,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.4"
+  walk_line_container:
+    dependency: "direct main"
+    description:
+      name: walk_line_container
+      sha256: "969b12f6ff893a6f0e542e3ffdad3fbb23c386c3e74b24fb9d521acda1709d41"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.14"
   web:
     dependency: transitive
     description:

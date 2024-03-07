@@ -173,6 +173,33 @@ class _CustomAppBarState extends State<CustomAppBar>
   }
 }
 
+// class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
+//   // final Widget leading;
+//   final String title;
+
+//   const MyAppBar({required this.title});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return AppBar(
+//       scrolledUnderElevation: 0,
+//       backgroundColor: Color(0xffFFFBFF).withOpacity(0.95),
+//       leading: backButon(context),
+//       title: Text(
+//         title,
+//         style: const TextStyle(
+//           fontWeight: FontWeight.bold,
+//           fontSize: 18,
+//         ),
+//       ),
+//     );
+//   }
+
+//   @override
+//   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
+// }
+
+
 class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   // final Widget leading;
   final String title;
@@ -181,18 +208,26 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppBar(
-      scrolledUnderElevation: 0,
-      backgroundColor: Color(0xffFFFBFF).withOpacity(0.95),
-      leading: backButon(context),
-      title: Text(
-        title,
-        style: const TextStyle(
-          fontWeight: FontWeight.bold,
-          fontSize: 18,
+    return  AppBar(
+        scrolledUnderElevation: 0,
+        backgroundColor: Colors.transparent,
+        leading: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: CircleAvatar(
+            child: Center(
+                child: IconButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              icon: const Icon(
+                Icons.keyboard_arrow_left_sharp,
+                color: AppColors.primaryPink2,
+              ),
+            )),
+          ),
         ),
-      ),
-    );
+      );
+
   }
 
   @override

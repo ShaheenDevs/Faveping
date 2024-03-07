@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:get/get.dart';
 
+import '../View/Fave/fave_profile.dart';
 import '../View/Moments/post_view.dart';
 import '../res/commons/AppColors/AppColor.dart';
 
@@ -63,9 +64,13 @@ Widget momentCard(imageUrls) {
         children: [
           ListTile(
             contentPadding: EdgeInsets.all(0),
-            leading: CircleAvatar(
-              backgroundImage: NetworkImage(
-                  "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiYcpfphM1QJa4z41UmvGY06b0TfmPakWPuxSgbwJorwh7RO7k3ne6Q4ddwQLlkz_FmRkIyhzB86kNNKJRWe8U3-ePSh-O6nhGIpsXirt00aD9raE2y2Il20UzDmGMGxBye9nLtIx0B3Do5tz-1fiUKagp113jS0j5ao5qEOhDqfnne-fLZ75oOegHk0UQ/s1080/Attitude%20Girls%20DP%20For%20WhatsApp%203.jpg"),
+            leading: InkWell(
+              onTap: () => Get.to(FaveProfile()),
+              borderRadius: BorderRadius.all(Radius.circular(50)),
+              child: CircleAvatar(
+                backgroundImage: NetworkImage(
+                    "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiYcpfphM1QJa4z41UmvGY06b0TfmPakWPuxSgbwJorwh7RO7k3ne6Q4ddwQLlkz_FmRkIyhzB86kNNKJRWe8U3-ePSh-O6nhGIpsXirt00aD9raE2y2Il20UzDmGMGxBye9nLtIx0B3Do5tz-1fiUKagp113jS0j5ao5qEOhDqfnne-fLZ75oOegHk0UQ/s1080/Attitude%20Girls%20DP%20For%20WhatsApp%203.jpg"),
+              ),
             ),
             subtitle: Text("16:05, 10 Jan, 2024"),
             title: Text("Maria"),
