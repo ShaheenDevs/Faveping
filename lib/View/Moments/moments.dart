@@ -42,7 +42,6 @@ class _MomentsPageState extends State<MomentsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
-      backgroundColor: Colors.white,
       appBar: CustomAppBar(
         momentsController: momentsController,
       ),

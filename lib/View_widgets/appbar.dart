@@ -48,7 +48,7 @@ class _CustomAppBarState extends State<CustomAppBar>
     return Container(
       height: Get.height * 0.1,
       decoration: BoxDecoration(
-          color: Colors.white.withOpacity(0.95),
+          color: Color(0xffFFFBFF).withOpacity(0.95),
           borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(20),
               bottomRight: Radius.circular(20))),
@@ -182,6 +182,8 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      scrolledUnderElevation: 0,
+      backgroundColor: Color(0xffFFFBFF).withOpacity(0.95),
       leading: backButon(context),
       title: Text(
         title,

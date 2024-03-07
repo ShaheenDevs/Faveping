@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:get/get.dart';
 
+import '../View/Moments/post_view.dart';
 import '../res/commons/AppColors/AppColor.dart';
 
 Widget listWidget() {
@@ -52,78 +53,96 @@ Widget listWidget() {
 Widget momentCard(imageUrls) {
   return Padding(
     padding: const EdgeInsets.all(10.0),
-    child: Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        ListTile(
-          leading: CircleAvatar(
-            backgroundImage: NetworkImage(
-                "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiYcpfphM1QJa4z41UmvGY06b0TfmPakWPuxSgbwJorwh7RO7k3ne6Q4ddwQLlkz_FmRkIyhzB86kNNKJRWe8U3-ePSh-O6nhGIpsXirt00aD9raE2y2Il20UzDmGMGxBye9nLtIx0B3Do5tz-1fiUKagp113jS0j5ao5qEOhDqfnne-fLZ75oOegHk0UQ/s1080/Attitude%20Girls%20DP%20For%20WhatsApp%203.jpg"),
+    child: InkWell(
+      onTap: () => Get.to(PostView(
+        imgUrls: imageUrls,
+      )),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          ListTile(
+            contentPadding: EdgeInsets.all(0),
+            leading: CircleAvatar(
+              backgroundImage: NetworkImage(
+                  "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiYcpfphM1QJa4z41UmvGY06b0TfmPakWPuxSgbwJorwh7RO7k3ne6Q4ddwQLlkz_FmRkIyhzB86kNNKJRWe8U3-ePSh-O6nhGIpsXirt00aD9raE2y2Il20UzDmGMGxBye9nLtIx0B3Do5tz-1fiUKagp113jS0j5ao5qEOhDqfnne-fLZ75oOegHk0UQ/s1080/Attitude%20Girls%20DP%20For%20WhatsApp%203.jpg"),
+            ),
+            subtitle: Text("16:05, 10 Jan, 2024"),
+            title: Text("Maria"),
+            trailing: IconButton(
+                onPressed: () {},
+                icon: Image(
+                  image: AssetImage(AppIcons.menu),
+                  height: 20,
+                )),
           ),
-          subtitle: Text("16:05, 10 Jan, 2024"),
-          title: Text("Maria"),
-          trailing: IconButton(
-              onPressed: () {},
-              icon: Image(
-                image: AssetImage(AppIcons.menu),
-                height: 20,
+          Padding(
+            padding: const EdgeInsets.only(left: 8.0, right: 8.0, bottom: 8.0),
+            child: Align(
+                alignment: Alignment.topLeft,
+                child: Text(
+                  """Try to stand up 🌻 ;
+no more can you fall 🌻.
+Life is full of ups and downs; take them in your stride. You will discover your little star hidden inside. """,
+                  maxLines: 3,
+                  overflow: TextOverflow.ellipsis,
+                )),
+          ),
+          SizedBox(
+              height: Get.height * 0.3,
+              child: CustomImageLayout(
+                imageUrls: imageUrls,
               )),
-        ),
-        SizedBox(
-            height: Get.height * 0.3,
-            child: CustomImageLayout(
-              imageUrls: imageUrls,
-            )),
-        Row(
-          children: [
-            IconButton(
-                onPressed: () {},
-                icon: Image(
-                  image: AssetImage(AppIcons.like),
-                  height: 20,
-                )),
-            Text(
-              "22 Likes",
-              style: TextStyle(color: Colors.black.withOpacity(0.5)),
-            ),
-            IconButton(
-                onPressed: () {},
-                icon: Image(
-                  image: AssetImage(AppIcons.comment),
-                  height: 20,
-                )),
-            Text(
-              "1 Comments",
-              style: TextStyle(color: Colors.black.withOpacity(0.5)),
-            ),
-          ],
-        ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8),
-          child: Container(
-            decoration: BoxDecoration(
-                color: AppColors.primaryPink.withOpacity(0.1),
-                borderRadius: BorderRadius.all(Radius.circular(20))),
-            child: ListTile(
-              leading: CircleAvatar(
-                backgroundImage: NetworkImage(
-                    "https://designimages.appypie.com/displaypicture/displaypicture-17-face-person.jpg"),
+          Row(
+            children: [
+              IconButton(
+                  onPressed: () {},
+                  icon: Image(
+                    image: AssetImage(AppIcons.like),
+                    height: 20,
+                  )),
+              Text(
+                "22 Likes",
+                style: TextStyle(color: Colors.black.withOpacity(0.5)),
               ),
-              subtitle: Text(
-                "good to see you again",
-                overflow: TextOverflow.ellipsis,
-                maxLines: 1,
+              IconButton(
+                  onPressed: () {},
+                  icon: Image(
+                    image: AssetImage(AppIcons.comment),
+                    height: 20,
+                  )),
+              Text(
+                "1 Comments",
+                style: TextStyle(color: Colors.black.withOpacity(0.5)),
               ),
-              title: Text("Ali Khan"),
+            ],
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8),
+            child: Container(
+              decoration: BoxDecoration(
+                  color: AppColors.primaryPink.withOpacity(0.05),
+                  borderRadius: BorderRadius.all(Radius.circular(20))),
+              child: ListTile(
+                leading: CircleAvatar(
+                  backgroundImage: NetworkImage(
+                      "https://designimages.appypie.com/displaypicture/displaypicture-17-face-person.jpg"),
+                ),
+                subtitle: Text(
+                  "good to see you again",
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 2,
+                ),
+                title: Text("Ali Khan"),
+              ),
             ),
           ),
-        ),
-        SizedBox(
-          height: 5,
-        ),
-        Divider()
-      ],
+          SizedBox(
+            height: 5,
+          ),
+          Divider()
+        ],
+      ),
     ),
   );
 }
