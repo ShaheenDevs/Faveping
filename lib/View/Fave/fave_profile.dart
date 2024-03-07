@@ -1,11 +1,12 @@
 import 'package:faveping/View_widgets/appbar.dart';
 import 'package:faveping/View_widgets/glowing_button.dart';
 import 'package:faveping/res/assetsImages/images.dart';
+import 'package:faveping/res/commons/AppColors/AppColor.dart';
 import 'package:faveping/res/commons/appImages.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../res/assetsImages/icons.dart';
+import '../../view_models/controller/Fave_controller/fave_controller.dart';
 
 class FaveProfile extends StatefulWidget {
   const FaveProfile({super.key});
@@ -15,6 +16,7 @@ class FaveProfile extends StatefulWidget {
 }
 
 class _FaveProfileState extends State<FaveProfile> {
+  FaveController faveController = Get.put(FaveController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -102,16 +104,58 @@ class _FaveProfileState extends State<FaveProfile> {
           SizedBox(
             height: 10,
           ),
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              GlowingButtonFollow(text: "Follow"),
-              messageFaveButton()
-            ],
+          Obx(
+            () => Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                faveController.follow.value == true
+                    ? GestureDetector(
+                        onTap: () => faveController.updateFollow(false),
+                        child: GlowingButtonFollow(text: "Follow"))
+                    : GestureDetector(
+                        onTap: () => faveController.updateFollow(true),
+                        child: GlowingButtonUnfollow(text: "Unfollow")),
+                messageFaveButton()
+              ],
+            ),
+          ),
+          Obx(
+            () => Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                InkWell(
+                    onTap: () => faveController.updateIndex(0),
+                    child: faveProfileTextBTN(
+                        "Moments", 0, faveController.currentIndex.value)),
+                InkWell(
+                    onTap: () => faveController.updateIndex(1),
+                    child: faveProfileTextBTN(
+                        "Photos", 1, faveController.currentIndex.value)),
+              ],
+            ),
           )
         ],
       ),
     );
   }
+}
+
+Widget faveProfileTextBTN(title, index, currentIndex) {
+  return Padding(
+    padding: const EdgeInsets.all(10),
+    child: Column(
+      children: [
+        Text(title),
+        index == currentIndex
+            ? Container(
+                width: 40,
+                height: 2,
+                color: AppColors.primaryPink,
+              )
+            : Container()
+      ],
+    ),
+  );
 }

@@ -33,6 +33,34 @@ Widget buildtextfield(controller, hint, icon) {
   );
 }
 
+Widget buildtextfieldSearch(controller, hint, icon) {
+  return TextFormField(
+    validator: ((txt) {
+      if (txt == null || txt.isEmpty) {
+        return "textfielderror".tr;
+      } else {
+        return null;
+      }
+    }),
+    controller: controller,
+    style: const TextStyle(color: Colors.black54),
+    decoration: InputDecoration(
+        hintStyle: const TextStyle(color: Colors.black26),
+        labelStyle: const TextStyle(color: Colors.black26),
+        prefixIcon: Icon(
+          icon,
+          color: AppColors.primaryPink,
+        ),
+        label: Text(hint),
+        // border: const UnderlineInputBorder(),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+          // borderSide: BorderSide(color: Colors.green)
+        ),
+        hintText: hint),
+  );
+}
+
 Widget buildtextfieldComment(controller, hint, icon) {
   return TextFormField(
     validator: ((txt) {

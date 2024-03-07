@@ -84,69 +84,38 @@ class GlowingButtonUnfollow extends StatefulWidget {
   _GlowingButtonUnfollowState createState() => _GlowingButtonUnfollowState();
 }
 
-class _GlowingButtonUnfollowState extends State<GlowingButtonUnfollow>
-    with SingleTickerProviderStateMixin {
-  late AnimationController _animationController;
-  late Animation<double> _animation;
-
+class _GlowingButtonUnfollowState extends State<GlowingButtonUnfollow> {
   @override
-  void initState() {
-    super.initState();
-    _animationController = AnimationController(
-      duration: const Duration(milliseconds: 1500),
-      vsync: this,
-    )..repeat(reverse: true);
-    _animation = Tween<double>(begin: 0.0, end: 7.0).animate(
-        _animationController); // Adjust the end value for reduced glow width
-  }
-
-  @override
-  void dispose() {
-    _animationController.dispose();
-    super.dispose();
-  }
-
   @override
   Widget build(BuildContext context) {
-    return AnimatedBuilder(
-      animation: _animation,
-      builder: (BuildContext context, Widget? child) {
-        return Container(
-          width: Get.width * 0.25,
-          height: 40,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10.0),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.purple.withOpacity(0.2),
-                blurRadius: _animation.value,
-                spreadRadius: _animation.value,
-              ),
-            ],
-            gradient: LinearGradient(
-                begin: Alignment.topRight,
-                end: Alignment.bottomLeft,
-                colors: [AppColors.primaryPink, AppColors.primaryPink2]),
-            color: Colors.purple,
+    return Container(
+      width: Get.width * 0.3,
+      height: 40,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10.0),
+
+        // gradient: LinearGradient(
+        //     begin: Alignment.topRight,
+        //     end: Alignment.bottomLeft,
+        //     colors: [AppColors.primaryPink, AppColors.primaryPink2]),
+        color: Colors.grey,
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Icon(
+            Icons.close,
+            color: Colors.white,
           ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(
-                Icons.add,
-                color: Colors.white,
-              ),
-              Text(
-                widget.text,
-                style: TextStyle(
-                  fontSize: 16.0,
-                  color: Colors.white,
-                ),
-              ),
-            ],
+          Text(
+            widget.text,
+            style: TextStyle(
+              fontSize: 16.0,
+              color: Colors.white,
+            ),
           ),
-        );
-      },
+        ],
+      ),
     );
   }
 }
