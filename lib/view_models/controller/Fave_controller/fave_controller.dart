@@ -14,4 +14,6 @@ class FaveController extends GetxController {
     follow.value = value;
     debugPrint(follow.value.toString());
   }
+
+  
 }
