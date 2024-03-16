@@ -23,7 +23,7 @@ class _MyBottomNavBarState extends State<MyBottomNavBar> {
     const MomentsPage(),
     const ChatPage(),
     const FavePage(),
-    const PartyPage(),
+    // const PartyPage(),
     const ProfilePage()
   ];
 
@@ -101,14 +101,14 @@ class _MyBottomNavBarState extends State<MyBottomNavBar> {
                         },
                         child: bottomnavicon(
                             AppIcons.fave, "Fave", _currentIndex, 2)),
-                    GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            _currentIndex = 3;
-                          });
-                        },
-                        child: bottomnavicon(
-                            AppIcons.party, "Party", _currentIndex, 3)),
+                    // GestureDetector(
+                    //     onTap: () {
+                    //       setState(() {
+                    //         _currentIndex = 3;
+                    //       });
+                    //     },
+                    //     child: bottomnavicon(
+                    //         AppIcons.party, "Party", _currentIndex, 3)),
                     GestureDetector(
                         onTap: () {
                           setState(() {
