@@ -187,7 +187,7 @@ class MyAppBarSimple extends StatelessWidget implements PreferredSizeWidget {
       scrolledUnderElevation: 0,
       backgroundColor: Color(0xffFFFBFF).withOpacity(0.95),
       title: Text(
-        "Chats",
+        title,
         style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
       ),
     );
@@ -290,7 +290,7 @@ class _FaveAppBarState extends State<FaveAppBar>
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
-                      "FAVES",
+                      "Faves",
                       style:
                           TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
                     ),

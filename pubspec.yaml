@@ -47,6 +47,8 @@ dependencies:
   flutter_staggered_grid_view: ^0.7.0
   country_list_pick: ^1.0.1+6
   walk_line_container: ^0.0.14
+  carousel_slider: ^4.2.1
+  cached_network_image: ^3.3.1
 
 dev_dependencies:
   flutter_test:
